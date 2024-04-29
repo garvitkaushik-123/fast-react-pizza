@@ -23,13 +23,14 @@ function Home() {
         </Button>
       )}
 
-      <div id='div-gpt-ad-1714374640142-0'>
-              <script dangerouslySetInnerHTML={{
-                __html: `
-                  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1714374640142-0'); });
-                `
-              }} />
-      </div>
+<div id='div-gpt-ad-1714380059238-0' style={{ minWidth: '300px', minHeight: '50px' }}>
+  <script dangerouslySetInnerHTML={{
+    __html: `
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1714380059238-0'); });
+    `
+  }} />
+</div>
+
     </div>
   );
 }
