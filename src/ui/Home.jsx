@@ -22,6 +22,14 @@ function Home() {
           Continue ordering, {username}
         </Button>
       )}
+
+      <div id='div-gpt-ad-1714374640142-0'>
+              <script dangerouslySetInnerHTML={{
+                __html: `
+                  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1714374640142-0'); });
+                `
+              }} />
+      </div>
     </div>
   );
 }
