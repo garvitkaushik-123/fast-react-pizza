@@ -17,47 +17,115 @@
     />
 
     <title>Fast React Pizza Co.</title>
-    <!-- <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-<script>
-  window.googletag = window.googletag || {cmd: []};
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/23043175892/fast-react-pizza/bannertest', [[300, 50], [320, 50]], 'div-gpt-ad-1714380059238-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script> -->
-<!-- <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script> -->
-<!-- <script>
-  window.googletag = window.googletag || {cmd: []};
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/23043175892/fast-react-pizza/bannertest', [[300, 50], [930, 180], [480, 320], [320, 50]], 'div-gpt-ad-1714380444823-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script> -->
 
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
-    window.googletag = window.googletag || {cmd: []};
-    googletag.cmd.push(function() {
-      googletag.defineSlot('/23043175892/P9qhbl/com_org_AmarUjala_news/P9qhbl_ANW_37_BAN_250_300_1', [300, 250], 'div-gpt-ad-1714391105800-0').addService(googletag.pubads());
-      googletag.pubads().enableSingleRequest();
+  window.googletag = window.googletag || { cmd: [] };
+  
+  googletag.cmd.push(() => {
       googletag.enableServices();
-    });
+  });
+  class CrackleDiv extends HTMLElement {
+      static observedAttributes = ["id", "width", "height", "background", "display", "visibility"];
+      loadDivAd = []
+      crackle_source_div_0 = document.createElement("div");
+      crackle_source_div_1 = document.createElement("div");
+      curr_active_div_counter = 0
+
+      constructor() {
+          super();
+          this.crackle_source_div_0.id = "crackle_source_div_0";
+          this.crackle_source_div_1.id = "crackle_source_div_1";
+
+          googletag.cmd.push(() => {
+              googletag.defineSlot("/6355419/Travel/Europe/France/Paris", [300, 250], "crackle_source_div_0").addService(googletag.pubads());
+              googletag.defineSlot("/23043175892/P12344/garvit_250_300", [300, 250], "crackle_source_div_1").addService(googletag.pubads());
+          });
+
+          this.crackleCacheAd()
+          this.crackleCacheAd()
+
+          setTimeout(() => {
+              console.log("Calling display for the first time")
+              this.crackleDisplayAd();
+          }, 10000);
+
+          setTimeout(() => {
+              console.log("Calling display for the second time")
+              this.crackleDisplayAd();
+          }, 20000);
+      }
+
+      connectedCallback() {
+          console.log("Custom element added to page.");
+          this.append(this.crackle_source_div_0)
+          this.append(this.crackle_source_div_1)
+      }
+
+      disconnectedCallback() {
+          console.log("Custom element removed from page.");
+      }
+
+      adoptedCallback() {
+          console.log("Custom element moved to new page.");
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+          console.log(`Attribute ${name} has changed.`);
+      }
+
+      gamAdLoad(curr_active_div) {
+          console.log("gamAdLoad")
+          console.log(curr_active_div.id)
+          googletag.cmd.push(() => {
+              googletag.display(curr_active_div.id);
+          });
+      }
+ 
+      crackleCacheAd() {
+          var curr_active_div = this.curr_active_div_counter == 0 ? this.crackle_source_div_0 : this.crackle_source_div_1
+          this.curr_active_div_counter = (this.curr_active_div_counter+1) % 2
+
+          curr_active_div.style.display = "none";
+          curr_active_div.style.visibility = "hidden"
+          this.gamAdLoad(curr_active_div);
+          this.loadDivAd.push(curr_active_div)
+      }
+
+      crackleLoadAd() {
+          if(this.loadDivAd.length<=0){
+              this.crackleCacheAd()
+          } else {
+              var loadedAd = this.loadDivAd.shift();
+              return loadedAd
+          }
+      }
+
+      crackleDisplayAd() {
+          var loadedAd = this.crackleLoadAd()
+          this.children[this.curr_active_div_counter].style.visibility = "hidden"
+          this.children[this.curr_active_div_counter].style.display = "none"
+          this.children[this.curr_active_div_counter].style.width = "0px";
+          this.children[this.curr_active_div_counter].style.height = "0px";
+
+          loadedAd.style.visibility = "visible"
+          loadedAd.style.display = "block"
+          loadedAd.style.width = "300px";
+          loadedAd.style.height = "250px";
+          console.log(loadedAd)
+      }
+  }
+
+  customElements.define("crackle-div", CrackleDiv);
+
   </script>
 
   </head>
   <body class="bg-stone-100 text-stone-700">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <!-- pizza banner - div-gpt-ad-1714380059238-0 -->
-    
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <!-- /23043175892/fast-react-pizza/bannertest -->
-    <div id='div-gpt-ad-1714391105800-0' style='min-width: 320px; min-height: 50px;'>
-      <script>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1714391105800-0'); });
-      </script>
+    <div style="display: flex; align-items: center; background-color: rgb(255, 255, 0); justify-content: center; height: 500px; width: 1000px;">
+      <crackle-div id="banner_ad_slot" ></crackle-div>
     </div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
